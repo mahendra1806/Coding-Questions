@@ -1,0 +1,18 @@
+class Solution:
+    def kthDistinct(self, arr: List[str], k: int) -> str:
+
+        frequency={}
+        for char in arr:
+            if char in frequency:
+                frequency[char]+=1
+            else:
+                frequency[char]=1
+
+        distinct=0
+        for char in arr:
+            if frequency[char]==1:
+                distinct+=1
+                if distinct==k:
+                    return char
+        return ""
+
