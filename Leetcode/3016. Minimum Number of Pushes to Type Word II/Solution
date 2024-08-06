@@ -1,0 +1,20 @@
+Intuition
+Calculate the minimum key presses required to type a string by grouping characters and assigning key presses based on their frequency.
+
+Approach
+Count Frequencies: Use a counter to tally occurrences of each character.
+Sort Frequencies: Order characters by frequency in descending order.
+Assign Push Counts: Characters are assigned pushes based on their position in groups of 8.
+Calculate Total Pushes: Compute the total presses needed based on character frequency and push group.
+
+class Solution:
+    def minimumPushes(self, word: str) -> int:
+        freq=Counter(word)
+        sorted_freq=sorted(freq.values(), reverse=True)
+        total=0
+        key=8
+        for i, count in enumerate(sorted_freq):
+            group_number=i//key
+            total+=count*(group_number+1)
+        return total
+        
